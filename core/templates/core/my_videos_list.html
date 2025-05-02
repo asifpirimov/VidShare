@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="video-list">
+    <h2>My Uploaded Videos</h2>
+    
+    {% if videos %}
+        <div class="video-grid">
+            {% for video in videos %}
+            <div class="video-card">
+                <h3>{{ video.title }}</h3>
+                <div class="video-preview">
+                    <video controls width="200">
+                        <source src="{{ video.video_file.url }}">
+                    </video>
+                </div>
+                <a href="{% url 'my_video_detail' video.id %}" class="view-details">
+                    View Details
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-videos">You haven't uploaded any videos yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

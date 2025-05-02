@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Upload Video - VideoShare{% endblock %}
+
+{% block content %}
+<div class="upload-container">
+    <h2 class="upload-title">Upload Video</h2>
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="upload-button">Upload Video</button>
+    </form>
+    <a href="{% url 'home' %}" class="auth-link back-link">Back to Home</a>
+</div>
+{% endblock %}

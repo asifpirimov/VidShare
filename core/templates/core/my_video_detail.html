@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="video-detail">
+    <h2>{{ video.title }}</h2>
+    <div class="video-player">
+        <video controls width="100%">
+            <source src="{{ video.video_file.url }}">
+        </video>
+    </div>
+    
+    <div class="video-meta">
+        <p>Uploaded: {{ video.uploaded_at|date:"F j, Y" }}</p>
+        <p>Views: {{ video.views }}</p>  <!-- Add views field if needed -->
+    </div>
+    
+    <a href="{% url 'my_videos_list' %}" class="back-button">
+        Back to My Videos
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home - VideoShare{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <h1>Welcome to VideoShare!</h1>
+{% endblock %}
