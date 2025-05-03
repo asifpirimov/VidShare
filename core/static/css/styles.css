@@ -9,7 +9,37 @@ body {
     min-height: 100vh;
 }
 
-/* Modern Navbar styles */
+/* Modern Form Errors Style */
+.form-errors {
+    background-color: #ffe3e3; 
+    color: #e53935;
+    border: 1px solid #e53935;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(229, 57, 53, 0.2);
+    z-index: 2000;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+}
+
+.form-errors ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.form-errors li {
+    margin-bottom: 0.5rem;
+}
+
+
 /* Modern Navbar styles */
 .navbar {
     background-color: rgba(255, 255, 255, 0.98);
@@ -102,7 +132,7 @@ body {
 /* Page content */
 .main-content {
     flex: 1;
-    padding-top: 80px;
+    padding-top: 120px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;

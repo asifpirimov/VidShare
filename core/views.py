@@ -57,6 +57,8 @@ def upload_video(request):
             video.save()
             messages.success(request, 'Your video has been uploaded successfully!')
             return redirect('video_detail', video_id=video.id)
+        else:
+            messages.error(request, 'There was an error with your upload')
     else:
         form = VideoForm()
 
