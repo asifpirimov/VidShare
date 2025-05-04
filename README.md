@@ -17,7 +17,7 @@ VidShare is a responsive and user-friendly video sharing platform built with the
 ## 🛠️ Tech Stack
 
 - **Backend:** Django (Python)
-- **Frontend:** HTML, CSS (custom + Bootstrap)
+- **Frontend:** HTML, CSS (custom + Bootstrap)(CHATGPT)
 - **Database:** SQLite (default)
 - **Other:** Django Templates, Static Files, Media Handling
 
