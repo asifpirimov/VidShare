@@ -1,5 +1,5 @@
 from django import forms
-from .models import Video
+from .models import Video, Profile
 from django.core.exceptions import ValidationError
 import mimetypes
 
@@ -15,3 +15,8 @@ class VideoForm(forms.ModelForm):
             if not mime_type or not mime_type.startswith('video'):
                 raise ValidationError('Only video files are allowed.')
         return file
+    
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['profile_picture', 'bio', 'birth_date']

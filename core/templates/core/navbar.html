@@ -6,6 +6,7 @@
             {% if user.is_authenticated %}
                 <li><a href="{% url 'upload_video' %}" class="nav-link">Upload Video</a></li>
                 <li><a href="{% url 'my_videos_list' %}" class="nav-link">My Videos</a></li>
+                <li><a href="{% url 'profile' %}" class="nav-link">Profile</a></li>
                 <li><a href="{% url 'logout' %}" class="nav-link button">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>

@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .forms import VideoForm
+from .forms import VideoForm, ProfileForm
 from django.contrib.auth.decorators import login_required
-from .models import Video
+from .models import Video, Profile
 from django.core.paginator import Paginator
 
 
@@ -75,3 +75,16 @@ def my_video_detail(request, video_id):
     """Detail view for a specific video owned by the user"""
     video = get_object_or_404(Video, id=video_id, uploaded_by=request.user)
     return render(request, 'core/my_video_detail.html', {'video': video})
+
+@login_required
+def profile(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # redirect to the same page after saving
+    else:
+        form = ProfileForm(instance=profile)
+    
+    return render(request, 'core/profile.html', {'form': form, 'profile': profile})
