@@ -13,5 +13,5 @@
         </div>
     {% endif %}
 
-    <h1>Welcome to VideoShare!</h1>
+    <h1>Welcome to VideoShare, {{ request.user.username|capfirst }}!</h1>
 {% endblock %}
