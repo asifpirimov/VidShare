@@ -76,15 +76,31 @@ def my_video_detail(request, video_id):
     video = get_object_or_404(Video, id=video_id, uploaded_by=request.user)
     return render(request, 'core/my_video_detail.html', {'video': video})
 
+from django.contrib import messages
+
 @login_required
 def profile(request):
     profile = Profile.objects.get(user=request.user)
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
+        new_username = request.POST.get('username', request.user.username).strip()
+
+        if User.objects.filter(username=new_username).exclude(pk=request.user.pk).exists():
+            messages.error(request, 'Username already taken.')
+        elif form.is_valid():
             form.save()
-            return redirect('profile')  # redirect to the same page after saving
+            if new_username != request.user.username:
+                request.user.username = new_username
+                request.user.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('profile')
     else:
         form = ProfileForm(instance=profile)
-    
-    return render(request, 'core/profile.html', {'form': form, 'profile': profile})
+
+    return render(request, 'core/profile.html', {
+        'form': form,
+        'profile': profile,
+        'username': request.user.username,
+    })
+
